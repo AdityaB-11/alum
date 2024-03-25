@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="register input ">
+            <h2>REGISTER</h2>
+            <form id="register" method="post" >
+                <div class="input-box">
+                <label >First Name : </label>
+                <br>
+                <input type="text" name="fname" id="fname" placeholder="Enter your First Name">
+                <br><br>
+            </div>
+            <div class="input-box">
+                <label>Last Name : </label>
+                <br>
+                <input type="text" name="lname" id="lname" placeholder="Enter your Last Name">
+                <br><br>
+            </div>
+            <div class="input-box">
+                <label>Email : </label>
+                <br>
+                <input type="email" name="email" id="email" placeholder="Enter your valid email">
+                <br><br>
+            </div>
+            <div class="input-box">
+                <label>Your Age : </label>
+                <br>
+                <input type="number" name="age" id="age" placeholder="How old are you">
+                <br><br>
+            </div>
+            <div class="input-box">
+                <label>Gender : </label>
+                &nbsp;&nbsp;&nbsp;
+                <br>
+                <input type="radio" name="Gender" id="Male" value="male">
+                &nbsp;
+                <span>Male</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Gender" id="Female" value="female">
+                &nbsp;
+                <span>Female</span>
+                <br><br>
+            </div>
+                <div class="input-box">
+                <label>Your Contact No : </label>
+                <br>
+                <input type="number" name="contactno" id="contactno" placeholder="Enter your phone no">
+                <br><br>
+            </div>
+                <div class="input-box">
+                <label>Your Department : </label>
+                <br>
+                <input type="text" name="department" id="department" placeholder="Enter your department">
+                <br><br>
+            </div>
+                <div class="input-box">
+                <label>Username : </label>
+                <br>
+                <input type="text" name="username" id="username" placeholder="Enter your unique username">
+                <br><br>
+            </div>
+                <div class="input-box">
+                <label>Password : </label>
+                <br>
+                <input type="text" name="password" id="password" placeholder="Enter your unique password">
+                <br><br>
+            </div>
+                <button type="submit" class="btn" id="submit">REGISTER</button>
+                <!-- <input type="submit" value="submit" name="submit" id="submit" > -->
+            </form>
+        </div><!--end register-->
+    </div><!--end main-->
+
+    <script>
+        let radioButtons = document.querySelectorAll('input[name="Gender"]');
+        let gender;
+        radioButtons.forEach(function (radioButton) {
+            radioButton.addEventListener('change', function () {
+                // Checking which radio button is checked
+                if (radioButton.checked) {
+                    console.log('Selected option: ', radioButton.value);
+                    gender = radioButton.value;
+                }
+            });
+        });
+        document.getElementById("submit").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            const formData = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("email").value,
+                age: document.getElementById("age").value,
+                gender: gender,
+                contactno: document.getElementById("contactno").value,
+                department: document.getElementById("department").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+            };
+            console.log(formData);
+
+            // Send form data to the backend server using fetch API
+            fetch('http://localhost:3000/signup', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Form data submitted successfully.");
+                        // Optionally, redirect the user to a success page or perform other actions
+                    } else {
+                        <!-- throw new Error("Failed to submit form data."); -->
+                        console.log("Form failed to submitted");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    // Optionally, display an error message to the user
+                });
+        });
+    </script>
+</body>
+
+</html>

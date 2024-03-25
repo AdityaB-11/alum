@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styleLogin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="/login" method="post">
+            <h1>LOGIN</h1>
+            <div class="input-box">
+                <input name="username" id="username" type="text" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+
+            </div>
+            <div class="input-box">
+                <input name="password" id="password" type="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                
+            </div>
+            <button type="button" class="btn" id="login">LOGIN</button>
+
+
+            <div class="register-link">
+                <p>Don't have an account?<a href="Signup.html"> Register</a></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('login').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form data
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Construct the request body
+            const requestBody = JSON.stringify({ username, password });
+
+
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: requestBody
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    console.log('Request succeeded with response:', data.data.username);
+                    const heading = document.getElementById("data")
+                    heading.innerHTML = data.data.username
+                    if (data.redirectUrl) {
+                        window.location.href = data.redirectUrl
+                    } else {
+                        // Handle other responses as needed
+                    }
+                    // Handle response
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        });
+    </script>
+    <script src="./script.js" />
+</body>
+
+</html>

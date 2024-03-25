@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <div class="red-strip">
+
+</div>
+    <div class="custom-container-fluid">
+        <div class="slides">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="images/logo.jpg" alt="VESIT logo" style="height: 60px; width: 50px; padding:5px"> AlumConnect</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="community.html" target="_self">COMMUNITY</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="P&E.html">PROGRAMS & EVENTS</a>
+                            </li>
+                            
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="college.html">COLLEGE</a>
+                            </li>
+                            <li class="nav-item ">
+                              <a class="nav-link active" href="organizers.html">ORGANIZERS</a>
+                          </li>
+                            <!-- <li class="nav-item ">
+                                <a class="nav-link active" href="#">CONTRIBUTE</a>
+                            </li> -->
+                            
+                        </ul>
+                        <div class="box">
+                        <input type="text" placeholder="Search">
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+
+                        </div>
+                        <ul class="specify navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-but1">
+                                <a class="btn btn-outline-light" href="C:\Users\DELL\Desktop\Alumni\Signup.html" >LOGOUT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            
+        </div>
+        <div>
+            <!-- Home section design -->
+            <section class="home" id="home">
+                <div class="home-content">
+                    <h3>Hi, </h3>
+                    <h1 id="data">USER</h1>
+                    <h3>Welcome to <span>AlumConnect</span></h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto excepturi nesciunt sunt ea maxime deserunt unde ullam, hic inventore voluptate, assumenda quisquam, similique placeat at sequi iure ducimus in. Consequuntur.</p>
+                    <div class="social-media">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="#" class="btnnew">Download CV</a>
+                </div>
+
+                <div class="home-img">
+                    <img src="images/bg02.avif" alt="">
+
+                </div>
+            </section>
+
+        </div>
+            
+
+            <footer class="footer">
+              <div class="container_footer">
+                <div class="row">
+                  <div class="footer-col">
+                    <h4>CONTACT US</h4>
+                    <ul>
+                    <p>Tel : +91-22-61532510 / 27 (Admission)</p>
+                    <p>Fax : +91-22-61532555</p>
+                    <p>Email : vesit@ves.ac.in<br>vesit.admission@ves.ac.in<br>vesit.website@ves.ac.in<br> exam.vesit@ves.ac.in</p>
+                        
+                    </ul>
+                  </div>
+                  <div class="footer-col">
+                    <h4>SOCIAL MEDIA </h4>
+                    <div class="social-links">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                  </div>
+                  <div class="footer-col">
+                    <h4>ADDRESS</h4>
+                    <p>Hashu Advani Memorial Complex, Collector's Colony
+                      Chembur, Mumbai, Maharashtra 400074</p>
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </footer>
+         </div>
+         <!-- <script>
+                fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: requestBody
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        console.log('Request succeeded with response:', data.data.username);
+                        const heading = document.getElementById("data")
+                        heading.innerHTML = data.data.username
+                        if(data.redirectUrl){
+                            window.location.href=data.redirectUrl
+                        }else {
+                            // Handle other responses as needed
+                        }
+                        // Handle response
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error.message);
+                    });
+        </script> -->
+        <script>
+            document.getElementById('login').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+        
+                // Get form data
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+        
+                // Construct the request body
+                const requestBody = JSON.stringify({ username, password });
+        
+        
+                fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: requestBody
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    console.log('Request succeeded with response:', data.data.username);
+                    const heading = document.getElementById("data")
+                    heading.innerHTML = data.data.username // Update the inner HTML with the username
+                    if(data.redirectUrl){
+                        window.location.href=data.redirectUrl
+                    } else {
+                        // Handle other responses as needed
+                    }
+                    // Handle response
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+            });
+        </script>
+        
+</body>
+
+</html>
