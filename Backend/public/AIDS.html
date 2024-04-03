@@ -1,0 +1,52 @@
+ 
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alumni List</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>.alumni-item {
+  border: 4px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin: x 20px;
+  border-radius: 5px;
+}</style>
+</head>
+<body>
+  
+  <h1 class="font-bold text-3xl text-center mb-20">ALUMNI LIST:AIDS</h1>
+  <div class="alumni-list"></div>
+
+<script>
+  // Fetch alumni data from server
+  fetch('/alumni')
+    .then(response => response.json())
+    .then(alumniData => {
+      const alumniList = document.querySelector('.alumni-list');
+      alumniData.forEach(alumni => {
+        if (alumni.occupation !== "student" && alumni.department === "AIDS") { // Only display if occupation is not "student"
+          const alumniItem = document.createElement('div');
+          alumniItem.classList.add('alumni-item');
+          alumniItem.innerHTML = `
+          <div class="w-full py-12 lg:py-24 bg-yellow-300 border border-solid border-black-"><div class="container grid max-w-6xl gap-10 px-4 md:px-6 lg:grid-cols-2 xl:gap-16"><div class="flex flex-col gap-4 lg:order-2"><div class="space-y-2"><h1 class="text-3xl font-bold">
+            ${alumni.fname} ${alumni.lname}
+  </h1><p class="text-gray-500 dark:text-gray-400">Batch of ${alumni.batch}</p></div><div class="grid gap-1 sm:grid-cols-2"><div><h2 class="text-lg font-semibold">Contact</h2><p class="text-sm text-gray-500 dark:text-gray-400">${alumni.email}</p><p class="text-sm text-gray-500 dark:text-gray-400">${alumni.contactno}</p></div><div><h2 class="text-lg font-semibold">Address</h2><p class="text-sm text-gray-500 dark:text-gray-400">
+    ${alumni.address}
+    </p></div></div><div class="grid gap-1 sm:grid-cols-2"><div><h2 class="text-lg font-semibold">Occupation</h2><p class="text-sm text-gray-500 dark:text-gray-400">${alumni.occupation}</p></div><div><h2 class="text-lg font-semibold">Expertise</h2><p class="text-sm text-gray-500 dark:text-gray-400">${alumni.expertise}</p></div><div><h2 class="text-lg font-semibold">Department</h2><p class="text-sm text-gray-500 dark:text-gray-400">${alumni.department}</p></div></div></div><div class="flex items-center justify-center order-1"><img src="/placeholder.svg" width="300" height="300" alt="Photo" class="rounded-full" style="aspect-ratio:300/300;object-fit:cover"></div></div></div>
+
+          `;
+          alumniList.appendChild(alumniItem);
+        }
+      });
+    })
+    .catch(error => console.error('Error fetching alumni data:', error));
+</script>
+
+</body>
+</html>
+

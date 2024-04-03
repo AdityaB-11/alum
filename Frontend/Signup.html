@@ -38,6 +38,24 @@
                 <br><br>
             </div>
             <div class="input-box">
+                <label>Your Address : </label>
+                <br>
+                <input type="text" name="address" id="address" placeholder="Enter your address">
+                <br><br>
+            </div>
+            <div class="input-box">
+                <label>Your Occupation : </label>
+                <br>
+                <input type="text" name="occupation" id="occupation" placeholder="Enter your occupation">
+                <br><br>
+            </div>
+            <div class="input-box">
+                <label>Your expertise : </label>
+                <br>
+                <input type="text" name="expertise" id="expertise" placeholder="Enter your expertise">
+                <br><br>
+            </div>
+            <div class="input-box">
                 <label>Gender : </label>
                 &nbsp;&nbsp;&nbsp;
                 <br>
@@ -62,6 +80,15 @@
                 <input type="text" name="department" id="department" placeholder="Enter your department">
                 <br><br>
             </div>
+            </div>
+                <div class="input-box">
+                <label>Your Batch : </label>
+                <br>
+                <input type="number" name="batch" id="batch" placeholder="Enter your batch">
+                <br><br>
+            </div>
+            
+            
                 <div class="input-box">
                 <label>Username : </label>
                 <br>
@@ -75,6 +102,10 @@
                 <br><br>
             </div>
                 <button type="submit" class="btn" id="submit">REGISTER</button>
+                <li class="login_page">
+                    <a   href="login.html" >Go to login Page</a>
+                </li>
+                
                 <!-- <input type="submit" value="submit" name="submit" id="submit" > -->
             </form>
         </div><!--end register-->
@@ -99,9 +130,13 @@
                 lname: document.getElementById("lname").value,
                 email: document.getElementById("email").value,
                 age: document.getElementById("age").value,
+                address: document.getElementById("address").value,
+                occupation: document.getElementById("occupation").value,
+                expertise: document.getElementById("expertise").value,
                 gender: gender,
                 contactno: document.getElementById("contactno").value,
                 department: document.getElementById("department").value,
+                batch: document.getElementById("batch").value,
                 username: document.getElementById("username").value,
                 password: document.getElementById("password").value,
             };
@@ -110,7 +145,7 @@
             // Send form data to the backend server using fetch API
             fetch('http://localhost:3000/signup', {
                 method: "POST",
-                headers: {
+                headers: {  
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(formData)

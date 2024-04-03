@@ -2,16 +2,21 @@ const express = require("express");
 const fs = require("fs");
 const mongoose = require('mongoose');
 const app = express();
-const { connectDB } = require('./db/index.js')
+const { connectDB } = require('./db/index.js');
 const path = require("path");
-const cors = require('cors')
+const multer = require('multer');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const hbs = require("hbs");
-const { User } = require('./models/UserModel.js')
-const {Registration}= require('./models/Registration.js')
+
+const {Registration}= require('./models/Registration.js');
 // const collection = require("./mongodb");
 
 const templatePath = path.join(__dirname, '../template');
 const port = 3000;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 connectDB()
 
@@ -26,34 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.set("views", templatePath);
 
 // Define routes
-app.get("/", (req, res) => {
-    res.render("home");
+app.get("/card", (req, res) => {
+    res.render("card");
 });
-app.get("/login", async (req, res) => {
-    res.render("login");
-});
-
-
-
-// app.get("/signup", (req, res) => {
-//     res.render("signup");
-// });
-
-app.get("/community", (req, res) => {
-    res.render("community");
-});
-
-app.get("/P&E", (req, res) => {
-    res.render("P&E");
-});
-
-app.get("/organizers", (req, res) => {
-    res.render("organizers");
-});
-
-app.get("/college", (req, res) => {
-    res.render("college");
-});
+ 
 
 // app.post("/signup", async (req, res) => {
 //     try {
@@ -99,7 +80,7 @@ app.get("/college", (req, res) => {
 app.post('/signup', async (req, res) => {
     try {
         // Extract form data from request body
-        const { fname, lname, email, gender, contactno, age, department, username, password } = req.body;
+        const { fname, lname, email, gender, contactno, age,address,occupation,expertise, department,batch, username, password } = req.body;
 
         // Create a new registration document
         const registration = await Registration.create({
@@ -109,16 +90,21 @@ app.post('/signup', async (req, res) => {
             gender,
             contactno,
             age,
+            address,
+            occupation,
+            expertise,
+            
             department,
+            batch,
             username,
             password
         });
 
-        // Save the registration document to the database
-        console.log(registration)
-
+      
+        
         // Send success response
-        res.status(201).json({ message: 'User registered successfully' });
+        res.status(201).json({ message: 'User registered successfully',
+                               redirectUrl: "login.html" });
     } catch (error) {
         // Send error response
         console.error('Error in signup:', error);
@@ -193,6 +179,23 @@ app.get('/login', async (req, res) => {
 //         res.status(401).json({ success: false, message: 'Invalid credentials' });
 //     }
 // });
+
+
+app.get('/alumni', async (req, res) => {
+    try {
+      const alumniData = await Registration.find();
+      res.json(alumniData);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+  
+  // Serve HTML file
+  app.use(express.static('public'));
+  
+
+
+ 
 
 // Start the server
 app.listen(port, () => {

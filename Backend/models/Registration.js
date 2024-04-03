@@ -12,6 +12,19 @@ const RegistrationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    address: {
+        type: String,
+        required: true
+    },
+    occupation: {
+        type: String,
+        required: true
+    },
+    expertise: {
+        type: String,
+        required: true
+    },
+    
     gender: {
         type: String,
         required: true
@@ -21,7 +34,11 @@ const RegistrationSchema = new mongoose.Schema({
         required: true
     },
     age: {
-        type: Number,
+        type: String,
+        required: true
+    },
+    batch: {
+        type: String,
         required: true
     },
     department: {
